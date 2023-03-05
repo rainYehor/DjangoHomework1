@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>{{ question.title }}</h1>
+<p>{{ question.text }}</p>
+<h5>Автор: {{ question.author }}</h5>
+    
+<h2>Відповіді</h2>
+<hr>
+{% for answer in answers %}
+
+<p>{{ answer.text }}</p>
+<h5>Автор: {{ answer.author }}</h5>
+<hr>
+
+{% endfor %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <h2>Дати відповідь:</h2>
+    <p>
+      <input type="text" name="author" placeholder="Ваше ім'я" required />
+    </p>
+    <p>
+      <textarea
+        name="text"
+        id=""
+        cols="30"
+        rows="10"
+        placeholder="Ваша відповідь"
+      ></textarea>
+    </p>
+    <p><input type="submit" value="Створити" /></p>
+  </form>
+
+{% endblock content %}
